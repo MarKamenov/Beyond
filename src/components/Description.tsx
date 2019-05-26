@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { format } from 'date-fns';
 import { Box } from 'grid-styled';
 
-interface INavBarProps {
+interface IDescProps {
 	className?: string;
 	published: string;
 	description: string;
 }
 
-const UnstyledDescription: React.SFC<INavBarProps> = ({ className, published, description }) => (
+const UnstyledDescription: React.SFC<IDescProps> = ({ className, published, description }) => (
 	<Box className={className} mt={'1rem'}>
 		<Box>{`Published on ${format(new Date(published), 'MMM D')},  ${format(new Date(published), ' YYYY')}`}</Box>
 		<p>{description}</p>
