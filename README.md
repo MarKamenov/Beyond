@@ -26,6 +26,8 @@ public/index.html is the page template; src/index.js or if using typescipt index
 
 npm start Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.
 
+App is deployed at https://markamenov.github.io/Beyond/ .
+
 The page will reload if you make edits. You will also see any lint errors in the console.
 
 [theYouTubeApi]: <https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails,status&maxResults=10&playlistId=PLSi28iDfECJPJYFA4wjlF5KUucFvc0qbQ&key=AIzaSyCuv_16onZRx3qHDStC-FUp__A6si-fStw>
