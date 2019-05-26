@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Flex } from 'grid-styled';
 import TubeDetails from './TubeDetails';
-import styled from 'src/theme';
+import styled from 'styled-components';
 
 interface ITubeItems {
 	className?: string;

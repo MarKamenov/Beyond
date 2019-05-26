@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from '../theme';
+import styled from 'styled-components';
 import BackArrow from '../assets/images/BackArrow';
 import { Views } from '../types';
 import SingleTubeVideo from './SingleTubeVideo';

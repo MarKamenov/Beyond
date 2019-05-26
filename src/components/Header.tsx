@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Box } from 'grid-styled';
 import * as headerBg from '../assets/images/header_bg.png';
 import * as logo from '../assets/images/MusicPlay_logo.png';
-import styled from 'src/theme';
+import styled from 'styled-components';
 
 interface IHeaderProps {
 	className?: string;

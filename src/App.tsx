@@ -1,6 +1,5 @@
 import * as React from 'react';
-import './App.css';
-import styled from './theme';
+import styled from 'styled-components';
 import { observer, inject } from 'mobx-react';
 import { Flex } from 'grid-styled';
 import VideosList from './components/VideosList';

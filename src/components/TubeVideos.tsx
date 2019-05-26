@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from '../theme';
+import styled from 'styled-components';
 import PlayButton from '../assets/images/PlayButton';
 import { observer, inject } from 'mobx-react';
 import PlayListsStore from '../store/Playlists';
