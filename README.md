@@ -4,7 +4,7 @@
 Simple SPA based off the provided mockup and make a few API calls to a public web API.
 
 ### Functionality
-The home fetches data from youtube API and shows the youtube playlist. When clicked on video play icon we go to full mode view.  
+The home(default) view fetches data from youtube API and shows the youtube playlist. When clicked on video play icon we go to full mode view.  
 
 This project was bootstrapped with Create React App.
 
