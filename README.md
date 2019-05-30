@@ -26,6 +26,8 @@ public/index.html is the page template; src/index.js or if using typescipt index
 
 npm start Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.
 
+npm run deploy Creates build folder.
+
 App is deployed at https://markamenov.github.io/Beyond/ .
 
 The page will reload if you make edits. You will also see any lint errors in the console.
