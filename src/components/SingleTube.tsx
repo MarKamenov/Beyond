@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import BackArrow from '../assets/images/BackArrow';
 import { Views } from '../types';
 import SingleTubeVideo from './SingleTubeVideo';
+import Button from './Button';
 import { observer, inject } from 'mobx-react';
 import PlayListsStore from '../store/Playlists';
 import Description from './Description';
 import { Flex, Box } from 'grid-styled';
 import { IVideo } from '../types';
-import { computed } from 'mobx';
+import { action } from 'mobx';
 
 interface ISingleTube {
 	className?: string;
@@ -42,38 +43,54 @@ class SingleTube extends React.Component<ISingleTube> {
 	}
 
 	public render() {
-		const single: IVideo = this.singleVideo[0];
-
+		const single: IVideo = this.singleVideo();
+		const tubeId = single.contentDetails.videoId;
+		const snippet = single.snippet;
 		return (
 			<Flex className={this.props.className} flexDirection="column">
 				<Flex className="main-wrapper" flexDirection="row">
 					<Box className="tube-box">
-						<SingleTubeVideo tubeId={this.props.video} />
+						<SingleTubeVideo tubeId={tubeId || this.props.video} />
 					</Box>
 					<Box className="description-wrapper">
-						<h5>{single.snippet.title}</h5>
-						<Description published={single.snippet.publishedAt} description={single.snippet.description} />
-						<Box className="back">
-							<span>
+						<h5>{snippet.title}</h5>
+						<Description published={snippet.publishedAt} description={snippet.description} />
+						<Flex justifyContent="space-between" className="back">
+							<Flex justifyContent="center" alignItems="center">
 								<BackArrow />
-							</span>
-							<a onClick={() => this.changeView('default')} href="#" title="back arrow">
-								{' '}
-								Back to list
-							</a>
-						</Box>
+								<Box ml={1}>
+									<a onClick={() => this.changeView('default')} href="#" title="back arrow">
+										Back to list
+									</a>
+								</Box>
+							</Flex>
+							<Flex className="button-wrapper">
+								<Button onClick={this.getNextVideo}>next</Button>
+								<Button onClick={this.getPrevVideo}>previous</Button>
+							</Flex>
+						</Flex>
 					</Box>
 				</Flex>
 			</Flex>
 		);
 	}
 
-	@computed
-	private get singleVideo() {
-		return (
-			this.props.playlists &&
-			this.props.playlists.playList.filter(video => video.contentDetails.videoId === this.props.video)
-		);
+	private singleVideo() {
+		return this.props.playlists.playList[this.injected.playlists.pos];
+	}
+
+	@action.bound
+	private getNextVideo() {
+		this.injected.playlists.pos >= this.props.playlists.playList.length - 1
+			? (this.injected.playlists.pos = 0)
+			: (this.injected.playlists.pos += 1);
+	}
+
+	@action.bound
+	private getPrevVideo() {
+		this.injected.playlists.pos <= 0
+			? (this.injected.playlists.pos = this.props.playlists.playList.length - 1)
+			: (this.injected.playlists.pos -= 1);
 	}
 }
 
@@ -85,14 +102,26 @@ export default styled(SingleTube)`
 	}
 
 	.description-wrapper {
+		position: relative;
 		flex-grow: 1;
 		margin-left: 1.8rem;
+		max-height: 60vh;
 	}
 
 	.main-wrapper {
 		flex-direction: column;
 		@media (min-width: 768px) {
 			flex-direction: row;
+		}
+	}
+
+	.button-wrapper {
+		@media (min-width: 768px) {
+			position: absolute;
+			bottom: 0;
+		}
+		& button:not(:first-child) {
+			margin-left: 1rem;
 		}
 	}
 

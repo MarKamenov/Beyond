@@ -14,7 +14,7 @@ describe('Description props', () => {
 		expect(wrapper).toHaveLength(1);
 	});
 
-	it('check if description prop are correct', () => {
+	it('check if description prop is correct', () => {
 		const desc = props.description;
 		expect(desc).toBe('test');
 	});

@@ -18,7 +18,7 @@
 		"grid-styled": "^5.0.0",
 		"jest": "^24.8.0",
 		"lodash": "^4.17.11",
-		"mobx": "^5.9.4",
+		"mobx": "4",
 		"mobx-react": "^5.4.4",
 		"react": "^16.4.0",
 		"react-dom": "^16.4.0",
